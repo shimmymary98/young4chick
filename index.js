@@ -5,19 +5,36 @@
 //instantiations
 //app variabe =(const app =express)
 
+// Dependecies
 const express = require('express'); //dependcies
 const path= require('path');
 const app = express(); //instantications
 const port= 3000; //instantications
+const mongoose=require('mongoose');
+require('dotenv').config();
 
 //importing routes
 const Routers=require("./routes/Routers"); //importing routes from the studyroutes file
 const Routers2=require("./routes/Routers2"); //importing routes from the studyroutes2 file
+const dashboards=require("./routes/dashboards");
+const authroutes=require('./routes/authroutes');
+const aboutrouter=require('./routes/aboutrouter');
 
-//configurations
-app.set('view engine', 'pug');//setting the view engine to pug
-//pug is a template engine that allows you to write HTML in a more concise way
-app.set('views', path.join(__dirname, 'views'));
+
+//configurations;
+mongoose.connect(process.env.DATABASE);
+mongoose.connection
+.once('open',()=>{
+  console.log('Mongoose connection open');
+})
+.on('error',(err)=>{
+console.log(`connection error:${err.message}`);
+});
+
+
+app.set('view engine','pug');
+app.set('views',path.join(__dirname,'views'));
+
 
 //middleware
 //app.use = middleware
@@ -39,6 +56,9 @@ app.use(express.static(path.join(__dirname,'public')));
 // use imported routes
 app.use('/study',Routers); //using the imported routes
 app.use('/',Routers2); //using the imported routes
+app.use('/',aboutrouter);
+app.use('/',authroutes);
+app.use('/',dashboards);
 
 //app.use('/', studyRoutes); //using the imported routes
 

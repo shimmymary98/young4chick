@@ -1,0 +1,51 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title young4chicks
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr' crossorigin='anonymous')
+  link(rel='stylesheet' href='/css/styles.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' integrity='sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==' crossorigin='anonymous' referrerpolicy='no-referrer')
+.container
+  .row
+    .col-2
+    .col-6
+      h3.mt-5 Welcome to Young4Chicks
+      .card.border-primary.mt-3(id='login card')
+        .card-header.bg-primary.text-white
+          | Create your account
+        .card-body
+          form(action='/signup' method='post')
+            .mb-3
+              label.form-label(for='name') full name
+              input#fullname.form-control(type='text')
+            div
+            .mb-3
+              label.form-label(for='exampleInputPassword1') Password
+              input#password.form-control(type='password')
+            .mb-3
+              label.form-label(for='age') Age
+              input#Age.form-control(type='number')
+            .mb-3
+              label.form-label(for='email')
+                | Email 
+                address
+              input#email.form-control(type='email')
+            .mb-3
+              label.form-label(for='phone number') Phone number
+              input#phonenumber.form-control(type='number')
+            .mb-3
+              select.form-select(required='')
+                option(value='') Choose a role
+                option(value='farmer') Farmer
+                option(value='customer') Customer
+                option(value='sales-rep') Sales Rep
+                option(value='admin') Manager
+            .mb-3.form-check
+              input#remember.form-check-input(type='checkbox')
+              label.form-check-label(for='exampleCheck1') remember me
+            button.btn.btn-primary(type='submit')
+              i.fa.fa-sign-in(aria-hidden='true')
+              |                                 Signup
+script(src='/js/scripts.js')
+
