@@ -11,11 +11,11 @@ head
     .col-2
     .col-6
       h3.mt-5 Welcome to Young4Chicks
-      .card.border-primary.mt-3(id='login card')
+      .card.border-primary.mt-3(id='request feeds')
         .card-header.bg-primary.text-white
-          | Create your account
+          | request for feeds
         .card-body
-          form(action='/signup' method='post')
+          form(action='/requestfeeds' method='post')
             .mb-3
               label.form-label(for='name') full name
               input#fullname.form-control(
@@ -23,24 +23,13 @@ head
                 type='text')
             div
             .mb-3
-              label.form-label(for='exampleInputPassword1') Password
-              input#password.form-control(
-                name="password"
-                type='password')
-            .mb-3
-              label.form-label(for='age') Age
-              input#Age.form-control(
-                name="age"
-                min="0"
-                type='number')
-            .mb-3
-              label.form-label(for='email')
-                | Email 
-                address
-              input#email.form-control(
-                name="email_address"
-                unique=""
-                type='email')
+              select.form-select(
+                name="chicksage"
+                required='')
+                option(value='') Choose chicksage
+                option(value='0-6 weeks') 0-6 weeks
+                option(value='6 weeks-6 months') 6 weeks-6 months 
+                option(value='6 months-beyond') 6 months-beyond
             .mb-3
               label.form-label(for='phone number') Phone number
               input#phonenumber.form-control(
@@ -48,24 +37,23 @@ head
                 required=""
                 type='text')
               .mb-3 
-              label.form-label(for='  recommenders NIN ') Recommenders NIN
-              input#nin.form-control(
-                name="recommenders_nin"
+              label.form-label(for='kgs ') kgs
+              input#kgs.form-control(
+                name="kgs"
                 type='text')
             .mb-3
               select.form-select(
                 name="role"
                 required='')
                 option(value='') Choose a role
-                option(value='farmer') Farmer
-                option(value='customer') Customer
-                option(value='sales-rep') Sales Rep
-                option(value='admin') Manager
+                option(value='returning farmer') Returning Farmer
+                option(value='starter') Starter Farmer
             .mb-3.form-check
               input#remember.form-check-input(type='checkbox')
               label.form-check-label(for='exampleCheck1') remember me
             button.btn.btn-primary(type='submit')
               i.fa.fa-sign-in(aria-hidden='true')
-              |                                 Signup
+              |                                 submit request
 script(src='/js/scripts.js')
+
 

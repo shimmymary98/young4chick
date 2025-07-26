@@ -17,10 +17,16 @@ router.get('/signup', (req, res) => {
 })
 
 
-router.post('/signup', (req, res) => {
-    console.log(req.body);
+router.post('/signup', async (req, res) => {
+    try {
+        console.log(req.body);
     const newsignup = new signup(req.body);
-    newsignup.save();
-})
+    await newsignup.save();
+    } catch (error) {
+       console.error(error) 
+       res.status(400).render('signup')
+    }
+    
+});
 
 module.exports = router

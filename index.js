@@ -10,6 +10,12 @@ const express = require('express'); //dependcies
 const path= require('path');
 const app = express(); //instantications
 const port= 3000; //instantications
+const expressSession=require('express-session')({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized:false
+});
+const passport=require('passport')
 const mongoose=require('mongoose');
 require('dotenv').config();
 
@@ -19,7 +25,8 @@ const Routers2=require("./routes/Routers2"); //importing routes from the studyro
 const dashboards=require("./routes/dashboards");
 const authroutes=require('./routes/authroutes');
 const aboutrouter=require('./routes/aboutrouter');
-
+const requestroutes=require('./routes/requestroutes');
+                                                                                                                                                                                                                                                                     
 
 //configurations;
 mongoose.connect(process.env.DATABASE);
@@ -49,6 +56,10 @@ next();
 //}); 
 ///bodypaser
 app.use(express.urlencoded({extended:false}));
+app.use(expressSession);
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //serving static files
 app.use(express.static(path.join(__dirname,'public')));
@@ -59,6 +70,7 @@ app.use('/',Routers2); //using the imported routes
 app.use('/',aboutrouter);
 app.use('/',authroutes);
 app.use('/',dashboards);
+app.use('/',requestroutes)
 
 //app.use('/', studyRoutes); //using the imported routes
 
