@@ -15,7 +15,7 @@ head
         .card-header.bg-primary.text-white
           | Create your account
         .card-body
-          form(action='/signup' method='post')
+          form(action='/signup' method='POST')
             .mb-3
               label.form-label(for='name') full name
               input#fullname.form-control(
@@ -59,8 +59,8 @@ head
                 option(value='') Choose a role
                 option(value='farmer') Farmer
                 option(value='customer') Customer
-                option(value='sales-rep') Sales Rep
-                option(value='admin') Manager
+                option(value='sales_rep') Sales_Rep
+                option(value='manager') Manager
             .mb-3.form-check
               input#remember.form-check-input(type='checkbox')
               label.form-check-label(for='exampleCheck1') remember me

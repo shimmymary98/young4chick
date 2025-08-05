@@ -4,9 +4,9 @@ const router= express.Router(); //creating a new router instance
 //routing - creating routes
 // the home page is the first router and it doesn't need the / just the server name is enough
 // structre of a route app.METHOD(PATH,HANDLER);
-router.get('/', (req, res) => { // new
-  res.send('Homepage! Hello world this is the first page on the browser aka landing page.');
-}); // get  and listen are node methods
+// router.get('/', (req, res) => { // new
+//   res.send('Homepage! Hello world this is the first page on the browser aka landing page.');
+// }); // get  and listen are node methods
 
 //about routing /about takes you to about page.
 router.get('/about', (req, res) => { // new
@@ -28,8 +28,8 @@ res.send('Got a POST request')
 })
 
 router.put('/user', (req, res)=> {
-res.send('Got a PUT request at /user')
-})
+  res.send('Got a PUT request at /user');
+});
 
 router.delete('/user', (req, res)=> {
 res.send('Got a DELETE request at /user')

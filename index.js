@@ -19,13 +19,19 @@ const passport=require('passport')
 const mongoose=require('mongoose');
 require('dotenv').config();
 
+// import signup/user model
+const signup=require('./model/signupmodel')
+const addstock=require('./model/addstockmodel')
+
+
 //importing routes
 const Routers=require("./routes/Routers"); //importing routes from the studyroutes file
-const Routers2=require("./routes/Routers2"); //importing routes from the studyroutes2 file
 const dashboards=require("./routes/dashboards");
 const authroutes=require('./routes/authroutes');
 const aboutrouter=require('./routes/aboutrouter');
 const requestroutes=require('./routes/requestroutes');
+const farmerrouters=require('./routes/farmerrouters')
+const listrouter=require('./routes/listrouter')
                                                                                                                                                                                                                                                                      
 
 //configurations;
@@ -56,21 +62,27 @@ next();
 //}); 
 ///bodypaser
 app.use(express.urlencoded({extended:false}));
+// express session configurations
 app.use(expressSession);
 app.use(passport.initialize());
 app.use(passport.session());
 
+// passport configurations
+passport.use(signup.createStrategy());
+passport.serializeUser(signup.serializeUser());
+passport.deserializeUser(signup.deserializeUser());
 
 //serving static files
 app.use(express.static(path.join(__dirname,'public')));
 
 // use imported routes
 app.use('/study',Routers); //using the imported routes
-app.use('/',Routers2); //using the imported routes
 app.use('/',aboutrouter);
 app.use('/',authroutes);
 app.use('/',dashboards);
 app.use('/',requestroutes)
+app.use('/',farmerrouters)
+app.use('/',listrouter)
 
 //app.use('/', studyRoutes); //using the imported routes
 

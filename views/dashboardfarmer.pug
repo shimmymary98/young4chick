@@ -39,22 +39,26 @@ style.
         h3 Dashboard
         a.active(href='#')
           i.fa-solid.fa-house
-          |                         Home
-        a.active(href='#')
-          i.fa-solid.fa-suitcase
-          |                         revenue
-        a.active(href='#')
-          i.fa-solid.fa-truck
-          |                         stock
-        a.active(href='#')
-          i.fa-solid.fa-arrow-right-long
-          |                         Log out
-        a.btn.btn-danger(href='#')
-          i.fa-solid.fa-share-from-square
-          |                         Request feeds
-        a.btn.btn-success(href='#')
-          i.fa-solid.fa-pen-to-square
-          |                         Request chicks
+          button.btn.btn-outline-primary.w-100.text-start
+            | Home
+          a.active(href='#')
+            i.fa-solid.fa-suitcase
+            button.btn.btn-outline-primary.w-100.text-start
+              | revenue
+            a.active(href='#')
+              i.fa-solid.fa-truck
+              button.btn.btn-outline-primary.w-100.text-start
+                | stock
+              a.active(href='/logout')
+                i.fa-solid.fa-arrow-right-long
+                button.btn.btn-outline-secondary.w-100.text-start
+                  | Log out
+                a.btn.btn-danger(href='/requestfeeds')
+                  i.fa-solid.fa-share-from-square
+                  |                                         request feeds
+                a.btn.btn-success(href='/requestfeeds')
+                  i.fa-solid.fa-pen-to-square
+                  |                                         Request chicks
     main.col-md-9.ms-sm-auto.c0l-lg-10.px-md-4.py-4
       h1.mb-4.fw-bold
         | Welcome back,
@@ -63,7 +67,7 @@ style.
         .col-sm-6.col.-lg-3.d-flex
           .card.shadow-sm.h-100.w-100
             .card-body
-              h6.text-muted chicks
+              h6.text-muted chicks 
               h3.fw-semibod 100
               span.badge.bg-success
                 i.fa-solid.fa-house
@@ -71,15 +75,15 @@ style.
         .col-sm-6.col.-lg-3.d-flex
           .card.shadow-sm.h-100.w-100
             .card-body
-              h6.text-muted Revenue
-              h3.fw-semibod UGX 200000
+              h6.text-muted revenue
+              h3.fw-semibod ugx 100,000
               span.badge.bg-primary
                 i.fa-solid.fa-suitcase
                 |                                     this month
         .col-sm-6.col.-lg-3.d-flex
           .card.shadow-sm.h-100.w-100
             .card-body
-              h6.text-muted feed stock
+              h6.text-muted customers
               h3.fw-semibod 50 kgs
               span.badge.bg-danger
                 i.fa-solid.fa-truck

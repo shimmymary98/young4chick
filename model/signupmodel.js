@@ -1,13 +1,12 @@
 const mongoose = require('mongoose')
+const passortLocalMongoose=require('passport-local-mongoose');
 
 const signupSchema = new mongoose.Schema({
     full_name: {
         type: String,
         trim: true
     },
-    password: {
-        type: String,
-    },
+
     age: {
         type: Number,
         min: 0
@@ -29,9 +28,12 @@ const signupSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true,
-        enum: ['sales rep', 'customer' ,'farmer','manager'],
+        enum: ['sales_rep', 'customer' ,'farmer','manager'],
         default: 'user'
     }
 });
 
+signupSchema.plugin(passortLocalMongoose,{
+usernameField:'email_address'
+})
 module.exports=mongoose.model('signup',signupSchema);

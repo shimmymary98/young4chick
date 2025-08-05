@@ -2,6 +2,7 @@ const express=require('express');
 const router=express.Router();
 const requestfeeds=require('../model/requestfeedsmodel')
 const requestchicks=require('../model/requestchicksmodel')
+const addstock=require('../model/addstockmodel')
 
 router.get('/requestchicks',(req,res)=>{
     res.render('requestchicks');
@@ -35,7 +36,21 @@ router.post('/requestfeeds', async (req, res) => {
     
 });
 
+router.get('/addstock',(req,res)=>{
+    res.render('addstock');
+})
 
+router.post('/addstock', async(req, res) => {
+    try {
+        console.log(req.body);
+    const newaddstock = new addstock(req.body);
+    await newaddstock.save();
+    } catch (error) {
+       console.error(error) 
+       res.status(400).render('addstock')
+    }
+    
+});
 
 
 
